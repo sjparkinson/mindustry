@@ -19,4 +19,7 @@ VOLUME [ "/opt/mindustry/config" ]
 EXPOSE 6567
 EXPOSE 6567/udp
 
-CMD [ "java", "-jar", "/opt/mindustry/server-release.jar", "host" ]
+CMD [ "java", "-jar", "/opt/mindustry/server-release.jar", \
+  "host," \
+  "config", "name", "WFH Covid-19," \
+  "playerlimit", "8" ]
