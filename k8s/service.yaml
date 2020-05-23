@@ -9,12 +9,12 @@ spec:
       protocol: TCP
       port: 6567
       targetPort: 6567
-      nodePort: 36567
+      nodePort: 31567
     - name: udp
       protocol: UDP
       port: 6567
       targetPort: 6567
-      nodePort: 36567
+      nodePort: 31567
   selector:
     app.kubernetes.io/name: mindustry
     app.kubernetes.io/part-of: mindustry
