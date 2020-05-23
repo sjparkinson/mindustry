@@ -12,11 +12,9 @@ spec:
       protocol: TCP
       port: 6567
       targetPort: 6567
-      nodePort: 31567
     - name: udp
       protocol: UDP
       port: 6567
       targetPort: 6567
-      nodePort: 31567
   externalIPs:
     - 159.65.212.70
