@@ -18,8 +18,6 @@ spec:
       containers:
         - name: mindustry
           image: docker.pkg.github.com/sjparkinson/mindustry/mindustry:latest
-          stdin: true
-          tty: true
           securityContext:
             capabilities:
               drop:
