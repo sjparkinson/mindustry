@@ -34,6 +34,10 @@ spec:
           volumeMounts:
             - name: config
               mountPath: /opt/mindustry/config
+          resources:
+            requests:
+              cpu: 40m
+              memory: 160Mi
       imagePullSecrets:
         - name: github
   volumeClaimTemplates:
