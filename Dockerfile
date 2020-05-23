@@ -8,7 +8,7 @@ RUN mkdir /opt/mindustry && \
   mkdir /opt/mindustry/config
 
 RUN curl -o /opt/mindustry/server-release.jar \
-  https://github.com/Anuken/Mindustry/releases/download/v104.6/server-release.jar
+  -L https://github.com/Anuken/Mindustry/releases/download/v104.6/server-release.jar
 
 VOLUME [ "/opt/mindustry/config" ]
 
