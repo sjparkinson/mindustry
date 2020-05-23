@@ -37,7 +37,7 @@ jobs:
             })
 
       - name: docker login
-        run: docker login docker.pkg.github.com --username ${{ github.actor }} --password ${{ secrets.GITHUB_TOKEN }}
+        run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login docker.pkg.github.com --username ${{ github.actor }} --password-stdin
 
       - name: docker build
         run: |
