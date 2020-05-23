@@ -24,5 +24,18 @@ spec:
             - name: udp
               containerPort: 6567
               protocol: UDP
+          volumeMounts:
+            - name: config
+              mountPath: /opt/mindustry/config
       imagePullSecrets:
         - name: github
+  volumeClaimTemplates:
+    - metadata:
+        name: config
+      spec:
+        accessModes:
+          - ReadWriteOnce
+        resources:
+          requests:
+            storage: 1Gi
+        storageClassName: do-block-storage
