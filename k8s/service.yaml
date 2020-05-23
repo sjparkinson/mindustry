@@ -3,7 +3,7 @@ kind: Service
 metadata:
   name: mindustry
 spec:
-  type: NodePort
+  type: ClusterIP
   selector:
     app.kubernetes.io/name: mindustry
     app.kubernetes.io/part-of: mindustry
