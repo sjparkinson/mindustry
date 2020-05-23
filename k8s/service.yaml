@@ -19,4 +19,4 @@ spec:
       targetPort: 6567
       nodePort: 31567
   externalIPs:
-    - 64.227.41.101
+    - 159.65.212.70
