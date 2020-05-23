@@ -7,6 +7,7 @@ spec:
     matchLabels:
       app.kubernetes.io/name: mindustry
       app.kubernetes.io/part-of: mindustry
+  serviceName: mindustry
   replicas: 1
   template:
     metadata:
