@@ -20,6 +20,10 @@ spec:
           image: docker.pkg.github.com/sjparkinson/mindustry/mindustry:latest
           stdin: true
           tty: true
+          securityContext:
+            capabilities:
+              drop:
+                - ALL
           ports:
             - name: tcp
               containerPort: 6567
