@@ -15,13 +15,11 @@ RUN mkdir /opt/mindustry && \
   mkdir /opt/mindustry/config
 
 COPY --from=build /server-release.jar /opt/mindustry/server-release.jar
+COPY start-mindustry.sh /opt/mindustry/start-mindustry.sh
 
 VOLUME [ "/opt/mindustry/config" ]
 
 EXPOSE 6567
 EXPOSE 6567/udp
 
-ENTRYPOINT ["java", "-jar", "/opt/mindustry/server-release.jar"]
-
-# Mindustry server accepts start commands in an odd format without spaces between the comma seperator.
-CMD [ "host,playerLimit", "8" ]
+CMD [ "/opt/mindustry/start-mindustry.sh" ]
