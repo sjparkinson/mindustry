@@ -11,11 +11,7 @@ LABEL version="104.6"
 LABEL description="A sandbox tower defense game written in Java."
 LABEL maintainer="sam.james.parkinson@gmail.com"
 
-RUN apk --update add tar
-
-RUN mkdir /opt/mindustry && \
-  mkdir /opt/mindustry/config && \
-  mkdir /opt/mindustry/config/mods
+RUN mkdir -p /opt/mindustry/config
 
 COPY --from=build /server-release.jar /opt/mindustry/server-release.jar
 COPY start-mindustry.sh /opt/mindustry/start-mindustry.sh
