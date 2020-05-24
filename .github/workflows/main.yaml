@@ -11,7 +11,7 @@ jobs:
 
       - name: github deployment
         id: deployment
-        uses: actions/github-script@0.9.0
+        uses: actions/github-script@v1
         with:
           script: |
             const deployment = await github.repos.createDeployment({
@@ -25,7 +25,7 @@ jobs:
             return deployment.data.id;
 
       - name: github deployment in progress
-        uses: actions/github-script@0.9.0
+        uses: actions/github-script@v1
         with:
           script: |
             github.repos.createDeploymentStatus({
@@ -88,7 +88,7 @@ jobs:
         run: kubectl rollout status statefulset/mindustry --timeout=3m
 
       - name: github deployment success
-        uses: actions/github-script@0.9.0
+        uses: actions/github-script@v1
         if: success()
         with:
           script: |
@@ -102,7 +102,7 @@ jobs:
             })
 
       - name: github deployment failure
-        uses: actions/github-script@0.9.0
+        uses: actions/github-script@v1
         if: cancelled() || failure()
         with:
           script: |
