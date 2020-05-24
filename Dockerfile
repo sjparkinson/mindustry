@@ -25,4 +25,6 @@ VOLUME [ "/opt/mindustry/config" ]
 EXPOSE 6567
 EXPOSE 6567/udp
 
+WORKDIR /opt/mindustry
+
 CMD [ "/opt/mindustry/start-mindustry.sh" ]
