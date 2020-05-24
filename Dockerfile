@@ -1,13 +1,15 @@
-FROM debian:buster-slim AS build
+FROM alpine:3.2 AS build
 
-RUN apt-get update && \
-  apt-get install -y curl && \
-  rm -rf /var/lib/apt/lists/*
+RUN apk --update add curl ca-certificates
 
 RUN curl -o server-release.jar \
   -L https://github.com/Anuken/Mindustry/releases/download/v104.6/server-release.jar
 
-FROM openjdk:15-slim
+FROM openjdk:15-alpine
+
+LABEL version="104.6"
+LABEL description="A sandbox tower defense game written in Java."
+LABEL maintainer="sam.james.parkinson@gmail.com"
 
 RUN mkdir /opt/mindustry && \
   mkdir /opt/mindustry/config
@@ -19,4 +21,6 @@ VOLUME [ "/opt/mindustry/config" ]
 EXPOSE 6567
 EXPOSE 6567/udp
 
-CMD [ "java", "-jar", "/opt/mindustry/server-release.jar", "host" ]
+ENTRYPOINT ["java", "-jar", "/opt/mindustry/server-release.jar"]
+
+CMD [ "host" ]
