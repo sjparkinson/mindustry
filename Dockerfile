@@ -23,4 +23,5 @@ EXPOSE 6567/udp
 
 ENTRYPOINT ["java", "-jar", "/opt/mindustry/server-release.jar"]
 
+# Mindustry server accepts start commands in an odd format without spaces between the comma seperator.
 CMD [ "host,playerLimit", "8" ]
