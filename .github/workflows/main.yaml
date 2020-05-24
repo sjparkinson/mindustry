@@ -82,7 +82,7 @@ jobs:
         run: kubectl apply -k k8s/
 
       - name: kubectl annotate
-        run: kubectl annotate --record=false --overwrite=true statefulset/mindustry kubernetes.io/change-cause="updated to revision https://github.com/${{ github.repository }}/commit/${{ github.sha }}"
+        run: kubectl annotate statefulset/mindustry kubernetes.io/change-cause="updated to revision https://github.com/${{ github.repository }}/commit/${{ github.sha }}"
 
       - name: kubectl rollout status
         run: kubectl rollout status statefulset/mindustry --timeout=3m

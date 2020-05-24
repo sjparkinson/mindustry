@@ -9,7 +9,6 @@ spec:
       app.kubernetes.io/part-of: mindustry
   serviceName: mindustry
   replicas: 1
-  revisionHistoryLimit: 1
   template:
     metadata:
       labels:
