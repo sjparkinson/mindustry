@@ -23,4 +23,4 @@ EXPOSE 6567/udp
 
 ENTRYPOINT ["java", "-jar", "/opt/mindustry/server-release.jar"]
 
-CMD [ "host" ]
+CMD [ "host,playerLimit", "8" ]
