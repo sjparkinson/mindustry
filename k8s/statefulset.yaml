@@ -38,6 +38,9 @@ spec:
             requests:
               cpu: 40m
               memory: 160Mi
+          livenessProbe:
+            tcpSocket:
+              port: 6567
       imagePullSecrets:
         - name: github
   volumeClaimTemplates:
