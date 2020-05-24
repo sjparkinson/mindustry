@@ -13,14 +13,14 @@ LABEL maintainer="sam.james.parkinson@gmail.com"
 
 RUN mkdir -p /opt/mindustry/config
 
-COPY --from=build /server-release.jar /opt/mindustry/server-release.jar
-COPY start-mindustry.sh /opt/mindustry/start-mindustry.sh
+WORKDIR /opt/mindustry
+
+COPY --from=build /server-release.jar server-release.jar
+COPY start-commands.txt start-commands.txt
 
 VOLUME [ "/opt/mindustry/config" ]
 
 EXPOSE 6567
 EXPOSE 6567/udp
 
-WORKDIR /opt/mindustry
-
-CMD [ "/opt/mindustry/start-mindustry.sh" ]
+CMD java -jar server-release.jar < start-commands.txt
