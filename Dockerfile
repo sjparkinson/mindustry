@@ -16,11 +16,11 @@ RUN mkdir -p /opt/mindustry/config
 WORKDIR /opt/mindustry
 
 COPY --from=build /server-release.jar server-release.jar
-COPY start-mindustry.sh start-mindustry.sh
+COPY start-mindustry.sh /opt/mindustry/start-mindustry.sh
 
 VOLUME [ "/opt/mindustry/config" ]
 
 EXPOSE 6567
 EXPOSE 6567/udp
 
-CMD [ "start-mindustry.sh" ]
+CMD [ "/bin/sh", "/opt/mindustry/start-mindustry.sh" ]

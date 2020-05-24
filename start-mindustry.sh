@@ -1,4 +1,4 @@
-#/bin/sh
+#!/bin/sh
 
 cat <<EOF > java -jar server-release.jar
 config name WFH Covid-19
