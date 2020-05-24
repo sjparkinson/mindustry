@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 SERVER_NAME:=WFH Covid-19
 PLAYER_LIMIT:=8
