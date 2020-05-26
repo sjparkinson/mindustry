@@ -1,24 +1,36 @@
 #!/usr/local/bin/expect -f
+#
+# Usage:
+#
+# expect -f command.exp -- say hello world!
 
 log_user 0
-match_max 10000
 
 set timeout 1
 set send_slow {1 .01}
 
+# Attach to the running game server process
 spawn kubectl attach -it statefulset/mindustry
 
+# Search for the initial message in the kubectl output
 expect -ex "If you don't see a command prompt, try pressing enter.\r"
-sleep .1
 
 puts "Running \"$argv\" on statefulset/mindustry..."
 
+# Send the command for the game server process to run
 send -s -- "$argv\r"
 
 expect {
+	# Exit if the expectation reaches the timeout
 	timeout { exit 1 }
+
+	# Skip over the command printed to the output
 	-ex "$argv\r" { exp_continue }
+
+	# Exit on an error message in the output, formatted like "[E]"
 	-ex "\[91m\[1m\[E\]" { exit 1 }
+
+	# Search for a success-ish message in the output, formatted like "[I]"
 	-ex "\[92m\[1m\[I\]"
 }
 
