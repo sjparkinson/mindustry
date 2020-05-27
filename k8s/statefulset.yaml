@@ -15,6 +15,17 @@ spec:
         app.kubernetes.io/name: mindustry
         app.kubernetes.io/part-of: mindustry
     spec:
+      # Schedule in the CPU optimised node pool if available.
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+              - matchExpressions:
+                  - key: kubernetes.io/hostname
+                    operator: In
+                    values:
+                      # TODO: update this to the CPU optimized node.
+                      - pool-standard-375fq
       containers:
         - name: mindustry
           image: docker.pkg.github.com/sjparkinson/mindustry/mindustry:latest
