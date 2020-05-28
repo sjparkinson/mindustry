@@ -1,11 +1,13 @@
-name: Build
+name: Deploy
 
-on: push
+on:
+  push:
+    branches:
+      - master
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/master'
     steps:
       - uses: actions/checkout@v2
 
@@ -70,6 +72,8 @@ jobs:
           kind: StatefulSet
           metadata:
             name: mindustry
+            annotations:
+              kubernetes.io/change-cause: "updated to revision https://github.com/${{ github.repository }}/commit/${{ github.sha }}"
           spec:
             template:
               spec:
@@ -80,9 +84,6 @@ jobs:
 
       - name: kubectl apply
         run: kubectl apply -k k8s/
-
-      - name: kubectl annotate
-        run: kubectl annotate statefulset/mindustry kubernetes.io/change-cause="updated to revision https://github.com/${{ github.repository }}/commit/${{ github.sha }}"
 
       - name: kubectl rollout status
         run: kubectl rollout status statefulset/mindustry --timeout=3m
