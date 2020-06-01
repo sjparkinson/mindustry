@@ -2,6 +2,9 @@ apiVersion: apps/v1
 kind: StatefulSet
 metadata:
   name: mindustry
+  labels:
+    app.kubernetes.io/name: mindustry
+    app.kubernetes.io/part-of: mindustry
 spec:
   selector:
     matchLabels:
