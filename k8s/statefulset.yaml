@@ -12,6 +12,7 @@ spec:
       app.kubernetes.io/part-of: mindustry
   serviceName: mindustry
   replicas: 1
+  revisionHistoryLimit: 1
   template:
     metadata:
       labels:
@@ -28,7 +29,7 @@ spec:
                   - key: kubernetes.io/hostname
                     operator: In
                     values:
-                      - pool-cpu-optimized-371dy
+                      - pool-cpu-optimized-3mvci
       containers:
         - name: mindustry
           image: docker.pkg.github.com/sjparkinson/mindustry/mindustry:latest
