@@ -42,9 +42,11 @@ spec:
             requests:
               cpu: 30m
               memory: 128Mi
-          livenessProbe:
+          livenessProbe: &healthcheck
             tcpSocket:
               port: 6567
+          readinessProbe:
+            <<: *healthcheck
       imagePullSecrets:
         - name: github
   volumeClaimTemplates:
