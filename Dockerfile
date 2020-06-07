@@ -11,7 +11,12 @@ LABEL version="104.6"
 LABEL description="A sandbox tower defense game written in Java."
 LABEL maintainer="sam.james.parkinson@gmail.com"
 
-RUN mkdir -p /opt/mindustry/config
+RUN mkdir -p /opt/mindustry/config && \
+  addgroup -S mindustry && \
+  adduser -S mindustry -G mindustry && \
+  chown -R mindustry:mindustry /opt/mindustry
+
+USER mindustry:mindustry
 
 WORKDIR /opt/mindustry
 
